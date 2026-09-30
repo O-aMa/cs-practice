@@ -2,7 +2,7 @@ a = int(input())
 n = int(input())
 ker = 0
 kb = 0
-kmax = 0
+kmax = -1000
 ksr = 0
 print(n)
 for i in range(n):
@@ -17,5 +17,4 @@ for i in range(n):
     else:
         ker += 1
         n -= 1
-print(ker, kb, kmax, sep='\n')
-print(f'{ksr/n:.1f}')
+print(ker, kb, f'{kmax:.1f}', f'{ksr/n:.1f}', sep='\n')
