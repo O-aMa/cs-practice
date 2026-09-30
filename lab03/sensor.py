@@ -1,4 +1,4 @@
-a = int(input())
+a = float(input())
 n = int(input())
 ker = 0
 kb = 0
