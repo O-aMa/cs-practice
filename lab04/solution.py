@@ -12,7 +12,7 @@ def ranking(names: list[str], scores: list[float]) -> list[str]:
     r = []
     for i in range(len(names)):
         r.append([names[i], scores[i]])
-    r.sort(key=lambda -x[1])
+    r.sort(key=lambda x: -x[1])
     return [x[0] for x in r]
 
 def above_average(names: list[str], scores: list[float]) -> list[str]:
