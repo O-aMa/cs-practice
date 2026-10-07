@@ -12,7 +12,7 @@ def ranking(names: list[str], scores: list[float]) -> list[str]:
     a = zip(names,scores)
     a = sorted(a, key = lambda x: x, reverse=True)
     r = []
-    for aa in ar:
+    for aa in a:
         r.append(aa[1])
     return r
 
