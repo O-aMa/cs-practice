@@ -3,11 +3,12 @@ def winner(names: list[str], scores: list[float]) -> str:
     return names[a]
 
 def average(scores: list[float]) -> float:
-    a = sum(scores) - len(scores)
+    a = round(sum(scores) / len(scores), 2)
+    return a
 
 def ranking(names: list[str], scores: list[float]) -> list[str]:
     a = zip(scores, names)
-    a.sort()
+    a = sorted(a)
     r = []
     for aa in a:
         r.append(aa[1])
