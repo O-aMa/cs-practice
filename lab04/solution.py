@@ -13,7 +13,7 @@ def ranking(names: list[str], scores: list[float]) -> list[str]:
     a = sorted(a, key = lambda x: x, reverse=True)
     r = []
     for aa in a:
-        r.append(aa[1])
+        r.append(aa[0])
     return r
 
 def above_average(names: list[str], scores: list[float]) -> list[str]:
