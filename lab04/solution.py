@@ -11,8 +11,6 @@ def average(scores: list[float]) -> float:
 def ranking(names: list[str], scores: list[float]) -> list[str]:
     a = zip(names,scores)
     a = sorted(a, key = lambda x: -x)
-    for a in aa:
-
     r = []
     for aa in a:
         r.append(aa[0])
