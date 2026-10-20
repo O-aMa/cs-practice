@@ -4,9 +4,9 @@ def read_rows(lines):
     lines = lines[1:]
     for line in lines:
         line = line.split(sep=',')
-        if line.count() != 3:
+        if len(line) != 3:
             continue
-        r.append(dict(a[0]=line[0],a[1]=line[1],a[2]=line[2]))
+        r.append({a[0]:line[0],a[1]:line[1],a[2]:line[2]})
     return r
 
 
@@ -35,9 +35,9 @@ def total_minutes(rows, kind):
     return round(r, 1)
 
 def to_csv(counts):
-    r = ['тип, количество']
-    for key, value in counts:
-        v = key + str(value)
-        r.apeend(v)
+    r = ['тип,количество']
+    for key, value in counts.items():
+        v = key + ',' + str(value)
+        r.append(v)
     r = '\n'.join(r)
     return r
