@@ -1,13 +1,19 @@
 def read_rows(lines):
-    a = lines[0].split(sep=',')
-    r = []
-    lines = lines[1:]
+    rows = []
+    header = None
     for line in lines:
-        line = line.split(sep=',')
-        if len(line) != 3:
+        line = line.strip()
+        if not line:
             continue
-        r.append({a[0]:line[0],a[1]:line[1],a[2]:line[2]})
-    return r
+        fields = [f.strip() for f in line.split(",")]
+        if header is None:
+            header = fields
+            continue
+        if len(fields) != len(header):
+            continue
+        rows.append(dict(zip(header, fields)))
+    return rows
+
 
 
 def count_types(rows):
@@ -27,9 +33,7 @@ def total_minutes(rows, kind):
     return round(r, 1)
 
 def to_csv(counts):
-    r = ['тип,количество']
-    for key, value in counts.items():
-        v = key + ',' + str(value)
-        r.append(v)
-    r = '\n'.join(r)
-    return r
+    lines = ["тип,количество"]
+    for kind in sorted(counts):
+        lines.append(f"{kind},{counts[kind]}")
+    return "\n".join(lines) + "\n"
