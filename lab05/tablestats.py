@@ -11,27 +11,19 @@ def read_rows(lines):
 
 
 def count_types(rows):
-    z = 0
-    o = 0
-    v = 0
-    p = 0
+    counts = {}
     for row in rows:
-        if row['тип'] == 'запуск':
-            z += 1
-        elif row['тип'] == 'ошибка':
-            o += 1
-        elif row['тип'] == 'проверка':
-            p += 1
-        elif row['тип'] == 'выгрузка':
-            v += 1
-    counts = {'запуск': z, 'ошибка': o, 'проверка': p, 'выгрузка': v}
+        kind = row.get("тип")
+        if kind is None:
+            continue
+        counts[kind] = counts.get(kind, 0) + 1
     return counts
 
 def total_minutes(rows, kind):
     r = 0
     for row in rows:
         if row['тип'] == kind:
-            r += row['минуты']
+            r += int(row['минуты'])
     return round(r, 1)
 
 def to_csv(counts):
